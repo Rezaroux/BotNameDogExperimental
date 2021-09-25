@@ -5,7 +5,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const client = new DiscordJS.Client({
-    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS,]
+    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS]
 })
 
 client.on('ready', () => {
@@ -15,13 +15,12 @@ client.on('ready', () => {
         commandsDir: path.join(__dirname, 'commands'),
         typeScript: true,
         testServers: ['726196852646608897'],
-        
-        disabledDefaultCommands: [
-
-        ]
     })
     .setDefaultPrefix(';')
     .setColor(0xEB4444)
+    .setBotOwner(['379402987325620254', '472911548134719499'])
 })
+
+
 
 client.login(process.env.TOKEN)
