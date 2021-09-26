@@ -5,7 +5,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const client = new DiscordJS.Client({
-    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS]
+    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS]
 })
 
 client.on('ready', () => {
@@ -19,6 +19,26 @@ client.on('ready', () => {
     .setDefaultPrefix(';')
     .setColor(0xEB4444)
     .setBotOwner(['379402987325620254', '472911548134719499'])
+    .setCategorySettings([
+        {
+            name: 'Fun',
+            emoji: '🎮'
+        },
+        {
+            name: 'Music',
+            emoji: '🎶'
+        },
+        {
+            name: 'Moderation',
+            emoji: '🚧',
+            hidden: true
+        },
+        {
+            name: 'Utilities',
+            emoji: '🛠️',
+        },
+    ])
+    
 })
 
 

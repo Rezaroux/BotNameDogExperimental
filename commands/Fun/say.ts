@@ -11,7 +11,7 @@ export default {
     expectedArgs: '<text>',
     minArgs: 1,
 
-    callback: async ({ message, client, text }) => {
+    callback: async ({ message, text }) => {
         message.delete()
         message.channel.sendTyping();
         console.log(text)
