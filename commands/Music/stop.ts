@@ -8,8 +8,14 @@ export default {
     slash: true,
     testOnly: true,
 
-    callback: ({ interaction: msgInt}) => {
-        music.stop({ interaction: msgInt });
-        return 'Stopped ⛔'
+    callback: async ({ interaction: msgInt}) => {
+        const isConnected = await music.isConnected({ interaction: msgInt });
+        if(isConnected){
+            music.stop({ interaction: msgInt });
+            return 'Stopped ⛔'
+        }else{
+            return 'Not playing'
+        }
+        
     },
 } as ICommand

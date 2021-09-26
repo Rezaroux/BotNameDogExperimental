@@ -9,7 +9,13 @@ export default {
     testOnly: true,
 
     callback: async ({ interaction: msgInt }) => {
-        music.skip({ interaction: msgInt });
-        return 'Skipped ⏭'
+        const isConnected = await music.isConnected({ interaction: msgInt });
+        if(isConnected){
+            music.skip({ interaction: msgInt });
+            return 'Skipped ⏭'
+        }else{
+            return 'Not playing'
+        }
+        
     },
 } as ICommand

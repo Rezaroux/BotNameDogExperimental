@@ -9,7 +9,15 @@ export default {
     testOnly: true,
 
     callback: async ({ interaction: msgInt }) => {
-        music.resume({ interaction: msgInt });
-        return 'Resumed ⏯️'
+        const isResumed = await music.isResumed({ interaction: msgInt });
+        const isConnected = await music.isConnected({ interaction: msgInt });
+        if(!isResumed && isConnected){
+            music.resume({ interaction: msgInt });
+            return 'Resumed ⏯️'
+        }else{
+            return 'Already resumed'
+        }
+        
+        
     },
 } as ICommand

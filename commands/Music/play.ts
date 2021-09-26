@@ -50,6 +50,10 @@ export default {
             })
         })
         
+        const isResumed = await music.isResumed({ interaction: msgInt });
+        if(!isResumed){
+            music.resume({ interaction: msgInt });
+        }
         
         // msgInt.reply({
         //     content: 'Loading...',

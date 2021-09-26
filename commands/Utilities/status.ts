@@ -14,11 +14,15 @@ export default {
     callback: ({ interaction: msgInt, client }) => {
         let activityType = msgInt.options.getString('activitytype')!;
         let statusMessage = msgInt.options.getString('status')!;
-        try{
-            client.user?.setActivity(statusMessage, { type: parseInt(activityType) })
-        }catch(err){
-            console.log(err)
-            return `Failed!\n${err}`
+        if( activityType == '0' || activityType == '1' || activityType == '2' || activityType == '3' || activityType == '5'){
+            try{
+                client.user?.setActivity(statusMessage, { type: parseInt(activityType) })
+            }catch(err){
+                console.log(err)
+                return `Failed!\n${err}`
+            }
+        }else{
+            return 'Please enter a valid activity type'
         }
         return 'Bot activity set'
     },

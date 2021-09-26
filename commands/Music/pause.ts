@@ -9,7 +9,13 @@ export default {
     testOnly: true,
 
     callback: async ({ interaction: msgInt, }) => {
-        music.pause({ interaction: msgInt });
-        return 'Paused ⏯️'
+        const isPaused = await music.isPaused({ interaction: msgInt });
+        const isConnected = await music.isConnected({ interaction: msgInt });
+        if(!isPaused && isConnected){
+            music.pause({ interaction: msgInt });
+            return 'Paused ⏯️'
+        }else{
+            return 'Already paused'
+        }
     },
 } as ICommand
