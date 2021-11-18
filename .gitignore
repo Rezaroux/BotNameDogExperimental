@@ -1,0 +1,11 @@
+.env
+node_modules
+sfw-images
+sfw-videos
+issues.txt
+package-lock.json
+package.json
+run.bat
+tsconfig.json
+logos
+node_modules
