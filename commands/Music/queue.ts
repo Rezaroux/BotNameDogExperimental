@@ -1,7 +1,7 @@
 
 import { MessageEmbed } from "discord.js";
 import { ICommand } from "wokcommands";
-const music = require('@koenie06/discord.js-music');
+import * as music from '@koenie06/discord.js-music';
 
 export default {
     category: 'Music',
@@ -11,10 +11,11 @@ export default {
     testOnly: true,
 
     callback: async ({ interaction: msgInt }) => {
-        let queue = await(music.getQueue({ interaction: msgInt }))
         const isConnected = await music.isConnected({ interaction: msgInt });
         if(!isConnected) return 'There are no items currently in the queue'
-        
+        let queue = await (music.getQueue({ interaction: msgInt })) as any
+
+        console.log(queue)
 
         const queueEmbed = new MessageEmbed()
             .setTitle('Music queue')

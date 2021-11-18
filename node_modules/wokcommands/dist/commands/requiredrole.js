@@ -7,7 +7,7 @@ module.exports = {
     description: 'Specifies what role each command requires.',
     category: 'Configuration',
     permissions: ['ADMINISTRATOR'],
-    names: ['requiredroles', 'requirerole', 'requireroles'],
+    aliases: ['requiredroles', 'requirerole', 'requireroles'],
     minArgs: 2,
     maxArgs: 2,
     expectedArgs: '<command> <none-or-roleid>',

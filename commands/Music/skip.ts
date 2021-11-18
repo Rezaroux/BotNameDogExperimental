@@ -1,5 +1,5 @@
 import { ICommand } from "wokcommands";
-const music = require('@koenie06/discord.js-music');
+import * as music from '@koenie06/discord.js-music';
 
 export default {
     category: 'Music',

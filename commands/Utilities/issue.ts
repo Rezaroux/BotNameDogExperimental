@@ -15,7 +15,7 @@ export default {
     callback: ({ interaction: msgInt, }) => {
 
         var logs = fs.readFileSync('issues.txt', 'utf8')
-        fs.writeFileSync('issues.txt', logs + '\n' + msgInt.options.getString('issue') + ' - ' + msgInt.member?.user.username + msgInt.member?.user.discriminator)
+        fs.writeFileSync('issues.txt', logs + '\n' + msgInt.options.getString('issue') + ' - ' + msgInt.member?.user.username + '#' + msgInt.member?.user.discriminator)
 
         return 'Issue report sent'
     },

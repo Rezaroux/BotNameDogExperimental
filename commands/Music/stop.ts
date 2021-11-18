@@ -1,5 +1,5 @@
 import { ICommand } from "wokcommands";
-const music = require('@koenie06/discord.js-music');
+import * as music from '@koenie06/discord.js-music';
 
 export default {
     category: 'Music',
@@ -11,10 +11,21 @@ export default {
     callback: async ({ interaction: msgInt}) => {
         const isConnected = await music.isConnected({ interaction: msgInt });
         if(isConnected){
+            const isPaused = await music.isPaused({ interaction: msgInt });
+            if(isPaused){
+                music.pause({ interaction: msgInt });
+            }
+
+            console.log(music.getQueue.length)
+
+            let queue = await (music.getQueue({ interaction: msgInt })) as any
+
+            queue = []
             music.stop({ interaction: msgInt });
+            
             return 'Stopped ⛔'
         }else{
-            return 'Not playing'
+            return 'Not connected'
         }
         
     },

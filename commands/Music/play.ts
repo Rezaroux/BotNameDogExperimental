@@ -1,7 +1,7 @@
 import { ICommand } from "wokcommands";
-import { GuildMember, MessageEmbed } from "discord.js";
-const yts = require('yt-search');
-const music = require('@koenie06/discord.js-music');
+import { GuildMember, MessageEmbed, VoiceChannel } from "discord.js";
+import yts from 'yt-search';
+import * as music from '@koenie06/discord.js-music';
 
 
 export default {
@@ -18,8 +18,8 @@ export default {
 
     callback: async ({ interaction: msgInt }) => {
         const member = msgInt.member as GuildMember // || message.member
-        const song = msgInt.options.getString('song');
-        const voiceChannel = member.voice.channel;
+        const song = msgInt.options.getString('song')!;
+        const voiceChannel = member.voice.channel as VoiceChannel;
         if(!voiceChannel) return msgInt.reply({ content: 'You need to be in a voice channel!', ephemeral: true });
         let r = await yts(song)
         console.log(r.videos[0])
@@ -30,12 +30,14 @@ export default {
         // } )
         await msgInt.deferReply();
         const musicEmbed = new MessageEmbed()
-            .setTitle("WIP")
+            .setTitle("WIP");
 
+
+        console.log(r.videos[0].url)
         music.play({
             interaction: msgInt,
             channel: voiceChannel,
-            song: song
+            song: r.videos[0].url,
         })
         .then(() => {
             musicEmbed.setTitle(r.videos[0].title)
@@ -50,10 +52,10 @@ export default {
             })
         })
         
-        const isResumed = await music.isResumed({ interaction: msgInt });
-        if(!isResumed){
-            music.resume({ interaction: msgInt });
-        }
+        //const isResumed = await music.isResumed({ interaction: msgInt });
+        //if(!isResumed){
+        //    music.resume({ interaction: msgInt });
+        //}
         
         // msgInt.reply({
         //     content: 'Loading...',

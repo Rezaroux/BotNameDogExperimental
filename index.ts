@@ -14,11 +14,12 @@ client.on('ready', () => {
     new WOKCommands(client, {
         commandsDir: path.join(__dirname, 'commands'),
         typeScript: true,
-        testServers: ['726196852646608897'],
+        testServers: ['726196852646608897', '853133286791839745'],
+        botOwners: ['379402987325620254', '472911548134719499'],
+        mongoUri: process.env.MONGO_URI,
     })
     .setDefaultPrefix(';')
     .setColor(0xEB4444)
-    .setBotOwner(['379402987325620254', '472911548134719499'])
     .setCategorySettings([
         {
             name: 'Fun',

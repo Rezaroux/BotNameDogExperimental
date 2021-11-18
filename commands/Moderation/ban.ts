@@ -1,4 +1,4 @@
-import { ButtonInteraction, MessageActionRow, MessageButton, MessageEmbed } from "discord.js";
+import { ButtonInteraction, MessageActionRow, MessageButton, MessageComponentInteraction, MessageEmbed } from "discord.js";
 import { ICommand } from "wokcommands";
 
 
@@ -100,7 +100,7 @@ export default {
             return
         }
 
-        const filter = (btnInt: ButtonInteraction) => {
+        const filter = (btnInt: MessageComponentInteraction) => {
             return msgInt.user.id === btnInt.user.id
         }
 
