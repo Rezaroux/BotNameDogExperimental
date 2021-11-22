@@ -4,7 +4,7 @@ export default {
     category: 'Moderation',
     description: 'Deletes every message in a channel',
 
-    slash: 'both',
+    slash: true,
     testOnly: true,
     ownerOnly: true,
 

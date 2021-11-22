@@ -18,7 +18,7 @@ client.on('ready', () => {
         botOwners: ['379402987325620254', '472911548134719499'],
         mongoUri: process.env.MONGO_URI,
     })
-    .setDefaultPrefix(';')
+    .setDefaultPrefix('-')
     .setColor(0xEB4444)
     .setCategorySettings([
         {
